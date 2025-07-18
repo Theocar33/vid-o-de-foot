@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vidéos du Foot</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f0f4fa; color: #333; }
+    header { background: #004080; color: white; padding: 20px; text-align: center; }
+    main { padding: 20px; max-width: 800px; margin: auto; }
+    form { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    label { display: block; margin-top: 10px; }
+    input, textarea, select { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; }
+    button { background: #004080; color: white; padding: 10px 20px; border: none; margin-top: 15px; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #0066cc; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+  <script>
+    function sendEmail(e) {
+      e.preventDefault();
+      emailjs.sendForm('service_vbjztv2', 'template_6vlfuob', e.target, 'lz3cTukhTGaZePjzC')
+        .then(response => {
+          alert('E-mail envoyé avec succès !');
+          e.target.reset();
+        }, error => {
+          alert('Erreur : ' + JSON.stringify(error));
+        });
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Vidéos du Foot – Espace Parent</h1>
+  </header>
+  <main>
+    <h2>Création de compte parent</h2>
+    <form onsubmit="sendEmail(event)">
+      <label for="prenom">Prénom</label>
+      <input type="text" name="prenom" required>
+      
+      <label for="nom">Nom</label>
+      <input type="text" name="nom" required>
+      
+      <label for="email">Adresse e-mail</label>
+      <input type="email" name="email" required>
+      
+      <label for="motdepasse">Mot de passe</label>
+      <input type="password" name="motdepasse" required>
+
+      <button type="submit">Créer un compte</button>
+    </form>
+    <br>
+    <h2>Connexion Administrateur</h2>
+    <form onsubmit="event.preventDefault(); alert('Espace admin réservé');">
+      <label for="admin-pass">Mot de passe admin</label>
+      <input type="password" name="admin-pass" required>
+      <button type="submit">Se connecter</button>
+    </form>
+  </main>
+</body>
+</html>
